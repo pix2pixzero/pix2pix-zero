@@ -15,6 +15,7 @@
 
 We propose pix2pix-zero, a diffusion-based image-to-image approach that allows users to specify the edit direction on-the-fly (e.g., cat to dog). Our method can directly use pre-trained [Stable Diffusion](https://github.com/CompVis/stable-diffusion), for editing real and synthetic images while preserving the input image's structure. Our method is training-free and prompt-free, as it requires neither manual text prompting for each input image nor costly fine-tuning for each task.
 
+**TL;DR**: no finetuning required, no text input needed, input sturcture preserved.
 
 ## Results
 All our results are based on [stable-diffusion-v1-4](https://github.com/CompVis/stable-diffusion) model. Please the website for more results.
@@ -55,4 +56,10 @@ reference cross-attention maps.
 </p>
 </div>
 
-
+## Comparison
+Comparisons with different baselines, including, SDEdit + word swap, DDIM + word swap, and prompt-to-propmt. Our method successfully applies the edit, while preserving the structure of the input image. 
+<div>
+<p align="center">
+<img src='assets/comparison.jpg' align="center" width=900>
+</p>
+</div>
