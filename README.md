@@ -31,7 +31,7 @@ All our results are based on [stable-diffusion-v1-4](https://github.com/CompVis/
 ## Real Image Editing
 <div>
 <p align="center">
-<img src='assets/results_real.jpeg' align="center" width=800px>
+<img src='assets/results_real.jpg' align="center" width=800px>
 </p>
 </div>
 
