@@ -2,7 +2,7 @@
 
 ### [website](https://pix2pixzero.github.io/)
 
-## Code and Demo coming soon
+## Code and Demo will be released in a few days!
 
 
 <br>
