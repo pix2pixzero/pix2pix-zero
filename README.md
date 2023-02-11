@@ -2,6 +2,7 @@
 
 ## [**[website]**](https://pix2pixzero.github.io/)
 
+[![Replicate](https://replicate.com/cjwbw/pix2pix-zero/badge)](https://replicate.com/cjwbw/pix2pix-zero) 
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
 The results in the paper are based on the [CompVis](https://github.com/CompVis/stable-diffusion) library, which will be released later. 

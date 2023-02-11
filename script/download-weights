@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import shutil
+import torch
+
+sys.path.insert(0, "src")
+from utils.ddim_inv import DDIMInversion
+from utils.edit_pipeline import EditingPipeline
+
+
+MODEL_ID = "CompVis/stable-diffusion-v1-4"
+MODEL_CACHE = "diffusers-cache"
+
+if os.path.exists(MODEL_CACHE):
+    shutil.rmtree(MODEL_CACHE)
+os.makedirs(MODEL_CACHE, exist_ok=True)
+
+
+for torch_dtype in [torch.float16, torch.float32]:
+    sub_dir = f"{MODEL_CACHE}/inversion"
+    os.makedirs(sub_dir, exist_ok=True)
+    inversion_pipe = DDIMInversion.from_pretrained(
+        MODEL_ID,
+        cache_dir=sub_dir,
+        torch_dtype=torch_dtype,
+    ).to("cuda")
+
+    sub_dir = f"{MODEL_CACHE}/edit"
+    os.makedirs(sub_dir, exist_ok=True)
+
+    enditing_pipe = EditingPipeline.from_pretrained(
+        MODEL_ID,
+        cache_dir=sub_dir,
+        torch_dtype=torch_dtype,
+    ).to("cuda")
