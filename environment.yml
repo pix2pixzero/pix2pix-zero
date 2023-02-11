@@ -1,0 +1,23 @@
+name: pix2pix-zero
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - pip
+  - pytorch-cuda=11.6
+  - torchvision
+  - pytorch
+  - pip:
+    - accelerate
+    - diffusers
+    - einops
+    - gradio
+    - ipython
+    - numpy
+    - opencv-python-headless
+    - pillow
+    - psutil
+    - tqdm
+    - transformers
+    - salesforce-lavis
