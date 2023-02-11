@@ -1,0 +1,6 @@
+output
+scripts
+src/folder_*.py
+src/ig_*.py
+assets/edit_sentences
+src/utils/edit_pipeline_spatial.py
