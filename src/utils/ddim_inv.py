@@ -12,6 +12,12 @@ from base_pipeline import BasePipeline
 from cross_attention import prep_unet
 
 
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
+
+
 class DDIMInversion(BasePipeline):
 
     def auto_corr_loss(self, x, random_shift=True):
@@ -72,7 +78,7 @@ class DDIMInversion(BasePipeline):
 
         # Encode the input image with the first stage model
         x0 = np.array(img)/255
-        x0 = torch.from_numpy(x0).type(torch_dtype).permute(2, 0, 1).unsqueeze(dim=0).repeat(1, 1, 1, 1).cuda()
+        x0 = torch.from_numpy(x0).type(torch_dtype).permute(2, 0, 1).unsqueeze(dim=0).repeat(1, 1, 1, 1).to(device)
         x0 = (x0 - 0.5) * 2.
         with torch.no_grad():
             x0_enc = self.vae.encode(x0).latent_dist.sample().to(device, torch_dtype)

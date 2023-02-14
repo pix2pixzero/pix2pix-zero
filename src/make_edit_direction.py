@@ -10,8 +10,13 @@ from diffusers import DDIMScheduler
 from utils.edit_pipeline import EditingPipeline
 
 
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
+
 ## convert sentences to sentence embeddings
-def load_sentence_embeddings(l_sentences, tokenizer, text_encoder, device="cuda"):
+def load_sentence_embeddings(l_sentences, tokenizer, text_encoder, device=device):
     with torch.no_grad():
         l_embeddings = []
         for sent in l_sentences:
@@ -37,7 +42,11 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     # load the model
-    pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch.float16).to("cuda")
+    if torch.cuda.is_available():
+        pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch.float16).to(device)
+    else:
+        pipe = EditingPipeline.from_pretrained(args.model_path).to(device)
+
     bname_src = os.path.basename(args.file_source_sentences).strip(".txt")
     outf_src = os.path.join(args.output_folder, bname_src+".pt")
     if os.path.exists(outf_src):
@@ -45,7 +54,7 @@ if __name__=="__main__":
     else:
         with open(args.file_source_sentences, "r") as f:
             l_sents = [x.strip() for x in f.readlines()]
-        mean_emb = load_sentence_embeddings(l_sents, pipe.tokenizer, pipe.text_encoder, device="cuda")
+        mean_emb = load_sentence_embeddings(l_sents, pipe.tokenizer, pipe.text_encoder, device=device)
         print(mean_emb.shape)
         torch.save(mean_emb, outf_src)
 
@@ -56,6 +65,6 @@ if __name__=="__main__":
     else:
         with open(args.file_target_sentences, "r") as f:
             l_sents = [x.strip() for x in f.readlines()]
-        mean_emb = load_sentence_embeddings(l_sents, pipe.tokenizer, pipe.text_encoder, device="cuda")
+        mean_emb = load_sentence_embeddings(l_sents, pipe.tokenizer, pipe.text_encoder, device=device)
         print(mean_emb.shape)
         torch.save(mean_emb, outf_tgt)
