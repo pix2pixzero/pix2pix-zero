@@ -115,7 +115,7 @@ reference cross-attention maps.
     ```
     python src/edit_synthetic.py \
         --results_folder "output/synth_editing" \
-        --prompt_str "a high resolution painting of a cat in the style of van gough" \
+        --prompt_str "a high resolution painting of a cat in the style of van gogh" \
         --task "cat2dog"
     ```
 
