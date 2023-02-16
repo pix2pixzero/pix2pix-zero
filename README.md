@@ -1,7 +1,7 @@
 # pix2pix-zero
 
 ## [**[website]**](https://pix2pixzero.github.io/)
-
+<a href="https://huggingface.co/spaces/alvanlii/pix2pix_zero"><img src="https://img.shields.io/badge/%20HuggingFace%20-Demo-blue.svg" alt="HuggingFace Spaces"></a>
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
 The results in the paper are based on the [CompVis](https://github.com/CompVis/stable-diffusion) library, which will be released later. 
