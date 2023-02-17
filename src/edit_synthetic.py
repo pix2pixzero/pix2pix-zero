@@ -10,6 +10,11 @@ from diffusers import DDIMScheduler
 from utils.edit_directions import construct_direction
 from utils.edit_pipeline import EditingPipeline
 
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
+
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
@@ -32,11 +37,15 @@ if __name__=="__main__":
         torch_dtype = torch.float32
 
     # make the input noise map
-    torch.cuda.manual_seed(args.random_seed)
-    x = torch.randn((1,4,64,64), device="cuda")
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(args.random_seed)
+    else:
+        torch.manual_seed(args.random_seed)
+
+    x = torch.randn((1,4,64,64), device=device)
 
     # Make the editing pipeline
-    pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch_dtype).to("cuda")
+    pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch_dtype).to(device)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
     rec_pil, edit_pil = pipe(args.prompt_str, 

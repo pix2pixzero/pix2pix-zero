@@ -4,12 +4,18 @@ import argparse
 import numpy as np
 import torch
 import requests
+import glob
 from PIL import Image
 
 from diffusers import DDIMScheduler
 from utils.ddim_inv import DDIMInversion
 from utils.edit_directions import construct_direction
 from utils.edit_pipeline import EditingPipeline
+
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
 
 
 if __name__=="__main__":
@@ -37,7 +43,7 @@ if __name__=="__main__":
     # if the inversion is a folder, the prompt should also be a folder
     assert (os.path.isdir(args.inversion)==os.path.isdir(args.prompt)), "If the inversion is a folder, the prompt should also be a folder"
     if os.path.isdir(args.inversion):
-        l_inv_paths = sorted(glob(os.path.join(args.inversion, "*.pt")))
+        l_inv_paths = sorted(glob.glob(os.path.join(args.inversion, "*.pt")))
         l_bnames = [os.path.basename(x) for x in l_inv_paths]
         l_prompt_paths = [os.path.join(args.prompt, x.replace(".pt",".txt")) for x in l_bnames]
     else:
@@ -45,7 +51,7 @@ if __name__=="__main__":
         l_prompt_paths = [args.prompt]
 
     # Make the editing pipeline
-    pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch_dtype).to("cuda")
+    pipe = EditingPipeline.from_pretrained(args.model_path, torch_dtype=torch_dtype).to(device)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
 

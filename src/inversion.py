@@ -11,6 +11,11 @@ from lavis.models import load_model_and_preprocess
 from utils.ddim_inv import DDIMInversion
 from utils.scheduler import DDIMInverseScheduler
 
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
+
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--input_image', type=str, default='assets/test_images/cat_a.png')
@@ -31,9 +36,9 @@ if __name__=="__main__":
 
 
     # load the BLIP model
-    model_blip, vis_processors, _ = load_model_and_preprocess(name="blip_caption", model_type="base_coco", is_eval=True, device=torch.device("cuda"))
+    model_blip, vis_processors, _ = load_model_and_preprocess(name="blip_caption", model_type="base_coco", is_eval=True, device=torch.device(device))
     # make the DDIM inversion pipeline    
-    pipe = DDIMInversion.from_pretrained(args.model_path, torch_dtype=torch_dtype).to("cuda")
+    pipe = DDIMInversion.from_pretrained(args.model_path, torch_dtype=torch_dtype).to(device)
     pipe.scheduler = DDIMInverseScheduler.from_config(pipe.scheduler.config)
 
 
@@ -48,7 +53,7 @@ if __name__=="__main__":
         bname = os.path.basename(args.input_image).split(".")[0]
         img = Image.open(args.input_image).resize((512,512), Image.Resampling.LANCZOS)
         # generate the caption
-        _image = vis_processors["eval"](img).unsqueeze(0).cuda()
+        _image = vis_processors["eval"](img).unsqueeze(0).to(device)
         prompt_str = model_blip.generate({"image": _image})[0]
         x_inv, x_inv_image, x_dec_img = pipe(
             prompt_str, 

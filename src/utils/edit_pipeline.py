@@ -9,6 +9,11 @@ from base_pipeline import BasePipeline
 from cross_attention import prep_unet
 
 
+if torch.cuda.is_available():
+    device = "cuda"
+else:
+    device = "cpu"
+
 class EditingPipeline(BasePipeline):
     def __call__(
         self,
@@ -137,7 +142,7 @@ class EditingPipeline(BasePipeline):
                     module_name = type(module).__name__
                     if module_name == "CrossAttention" and 'attn2' in name:
                         curr = module.attn_probs # size is num_channel,s*s,77
-                        ref = d_ref_t2attn[t.item()][name].detach().cuda()
+                        ref = d_ref_t2attn[t.item()][name].detach().to(device)
                         loss += ((curr-ref)**2).sum((1,2)).mean(0)
                 loss.backward(retain_graph=False)
                 opt.step()
