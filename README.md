@@ -37,12 +37,32 @@ The top row for each of the results below show editing of real images, and the b
 <p align="center">
 <img src='assets/grid_dog2cat.jpg' align="center" width=800px>
 </p>
+
 <p align="center">
-<img src='assets/grid_zebra2horse.jpg' align="center" width=800px>
+<img src='assets/grid_cat_lowpoly.jpg' align="center" width=800px>
 </p>
+<p align="center">
+<img src='assets/grid_cat_boba.jpg' align="center" width=800px>
+</p>
+<p align="center">
+<img src='assets/grid_cat_suit.jpg' align="center" width=800px>
+</p>
+<p align="center">
+<img src='assets/grid_cat_hat.jpg' align="center" width=800px>
+</p>
+<p align="center">
+<img src='assets/grid_cat_crochetcat.jpg' align="center" width=800px>
+</p>
+
 <p align="center">
 <img src='assets/grid_cat2dog.jpg' align="center" width=800px>
 </p>
+
+<p align="center">
+<img src='assets/grid_person_robot.jpg' align="center" width=800px>
+</p>
+
+
 <p align="center">
 <img src='assets/grid_horse2zebra.jpg' align="center" width=800px>
 </p>
