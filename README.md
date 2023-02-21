@@ -1,11 +1,13 @@
 # pix2pix-zero
 
-## [**[website]**](https://pix2pixzero.github.io/)
+### [**website**](https://pix2pixzero.github.io/) | [**demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
 
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
 The results in the paper are based on the [CompVis](https://github.com/CompVis/stable-diffusion) library, which will be released later. 
 
+
+**[New!]** Demo with ability to generate custom directions released on Hugging Face! <br>
 **[New!]** Code for editing real and synthetic images released!
 
 
