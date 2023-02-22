@@ -50,8 +50,8 @@ if __name__=="__main__":
 
 
     for img_path in l_img_paths:
-        bname = os.path.basename(args.input_image).split(".")[0]
-        img = Image.open(args.input_image).resize((512,512), Image.Resampling.LANCZOS)
+        bname = os.path.basename(img_path).split(".")[0]
+        img = Image.open(img_path).resize((512,512), Image.Resampling.LANCZOS)
         # generate the caption
         _image = vis_processors["eval"](img).unsqueeze(0).to(device)
         prompt_str = model_blip.generate({"image": _image})[0]
