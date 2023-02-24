@@ -1,4 +1,5 @@
 # This workflow basically checks the code quality i.e the syntax of python files using pylint
+# and Black
 
 name: workflow_pipeline
 
@@ -23,3 +24,8 @@ jobs:
     - name: Running pylint
       run: |
         find . -name '*.py' -exec pylint {} \;
+
+    - name: Running black
+      uses: DataDog/action-py-black-formatter@v2.5
+      with:
+        fail_on_error: 'false'
