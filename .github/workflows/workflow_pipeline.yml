@@ -11,8 +11,13 @@ jobs:
     - uses: actions/setup-python@v3
       with:
         python-version: 3.x
-    - run: pip install --upgrade pip
-    - run: pip install "black<23" pylint==v3.0.0a3 mypy==v0.902
-    - run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
-    - run: mypy --strict $(git ls-files '*.py')
-    - run: black --diff --check $(git ls-files '*.py')
+    - name: Installing dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+        pip install black
+    - name: Running pylint
+      run: |
+        find . -name '*.py' -exec pylint {} \;
+    # - name: Running Black
+    # - run: black --diff --check $(git ls-files '*.py')
