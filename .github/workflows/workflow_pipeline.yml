@@ -3,41 +3,19 @@
 # version 3.10.6 and it runs on and Ubuntu base system
 name: workflow_pipeline
 
-on:
-  push: 
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    name: Checking Code
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Configure python
-      uses: actions/setup-python@v2
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-
-    # - name: Lint with flake8
-    #   run: |
-    #     # stop the build if there are Python syntax errors or undefined names
-    #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-    #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-    #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-    - name: Test with pytest
-      run: |
-        pytest
+        python-version: 3.x
+    - run: pip install --upgrade pip
+    - run: pip install "black<23" pylint==v3.0.0a3 mypy==v0.902
+    - run: black --diff --check $(git ls-files '*.py')
+    - run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
+    - run: mypy --strict $(git ls-files '*.py')
