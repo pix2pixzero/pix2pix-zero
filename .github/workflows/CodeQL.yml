@@ -28,7 +28,7 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
 
-    - name: CodeQL Analysis
+    - name: CodeQL Analysis for security
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
