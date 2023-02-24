@@ -21,7 +21,3 @@ jobs:
     - name: Running pylint
       run: |
         find . -name '*.py' -exec pylint {} \;
-        
-    - name: Running Black
-    - run: |
-        find . -name '*.py' -exec black {} \;
