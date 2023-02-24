@@ -1,3 +1,5 @@
+# This workflow basically checks the code quality i.e the syntax of python files using pylint
+
 name: workflow_pipeline
 
 on: [push]
