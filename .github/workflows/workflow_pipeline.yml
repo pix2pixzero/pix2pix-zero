@@ -19,5 +19,6 @@ jobs:
     - name: Running pylint
       run: |
         find . -name '*.py' -exec pylint {} \;
-    # - name: Running Black
-    # - run: black --diff --check $(git ls-files '*.py')
+    - name: Running Black
+    - run: |
+        find . -name '*.py' -exec black {} \;
