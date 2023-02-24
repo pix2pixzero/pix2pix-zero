@@ -1,6 +1,3 @@
-# This pipeline is basically automatically installing the python dependencies,
-# checks the python syntax using flake8, runs the aplication on standard python
-# version 3.10.6 and it runs on and Ubuntu base system
 name: workflow_pipeline
 
 on: [push]
@@ -10,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Checking Code
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: 3.x
     - run: pip install --upgrade pip
