@@ -12,10 +12,10 @@ jobs:
       with:
         python-version: 3.x
     - uses: psf/black@stable
-        with:
-          options: "--check --verbose"
-          src: "./src"
-          version: "~= 22.0"
+      with:
+        options: "--check --verbose"
+        src: "./src"
+        version: "~= 22.0"
     - run: pip install --upgrade pip
     - run: pip install "black<23" pylint==v3.0.0a3 mypy==v0.902
     - run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
