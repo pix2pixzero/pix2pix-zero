@@ -1,7 +1,7 @@
 # pix2pix-zero
 
 ### [**website**](https://pix2pixzero.github.io/) | [**demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
-
+#### **Quick start:** [**Edit images**](#getting-started) | [**Gradio (locally hosted)**](#gradio-demo)
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
 The results in the paper are based on the [CompVis](https://github.com/CompVis/stable-diffusion) library, which will be released later. 
@@ -140,6 +140,13 @@ reference cross-attention maps.
         --prompt_str "a high resolution painting of a cat in the style of van gogh" \
         --task "cat2dog"
     ```
+
+### **Gradio demo**
+- We also provide a UI for testing our method that is built with gradio. This demo also supports generating new directions on the fly! Running the following command in a terminal will launch the demo: 
+    ```
+    python app_gradio.py
+    ```
+- This demo is also hosted on HuggingFace [here](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo).
 
 ### **Tips and Debugging**
   - **Controlling the Image Structure:**<br>
