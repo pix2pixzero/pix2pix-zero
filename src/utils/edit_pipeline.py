@@ -35,6 +35,7 @@ class EditingPipeline(BasePipeline):
         guidance_amount=0.1,
         edit_dir=None,
         x_in=None,
+        only_sample=False, # only perform sampling, and no editing
 
     ):
 
@@ -49,9 +50,6 @@ class EditingPipeline(BasePipeline):
         # 2. Default height and width to unet
         height = height or self.unet.config.sample_size * self.vae_scale_factor
         width = width or self.unet.config.sample_size * self.vae_scale_factor
-
-        # TODO: add the input checker function
-        # self.check_inputs( prompt, height, width, callback_steps, negative_prompt, prompt_embeds, negative_prompt_embeds )
 
         # 2. Define call parameters
         if prompt is not None and isinstance(prompt, str):
@@ -115,6 +113,10 @@ class EditingPipeline(BasePipeline):
 
         # make the reference image (reconstruction)
         image_rec = self.numpy_to_pil(self.decode_latents(latents.detach()))
+
+        if only_sample:
+            return image_rec
+
 
         prompt_embeds_edit = prompt_embeds.clone()
         #add the edit only to the second prompt, idx 0 is the negative prompt
