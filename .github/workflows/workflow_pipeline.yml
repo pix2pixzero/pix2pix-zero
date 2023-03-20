@@ -1,4 +1,4 @@
-# This workflow basically checks the code quality i.e the syntax of python files using pylint
+# This workflow checks the code quality i.e the syntax of python files using pylint
 # and Black
 
 name: workflow_pipeline
