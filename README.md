@@ -6,7 +6,7 @@
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
 The results in the paper are based on the [CompVis](https://github.com/CompVis/stable-diffusion) library, which will be released later. 
 
-
+**[New!]** GPT-3.5 based embeddings for all classes in CIFAR100 released! <br>
 **[New!]** Demo with ability to generate custom directions released on Hugging Face! <br>
 **[New!]** Code for editing real and synthetic images released!
 
@@ -171,7 +171,7 @@ reference cross-attention maps.
         --output_folder assets/embeddings_sd_1.4
     ```
 - After running the above command, you can set the flag `--task apple2orange` for the new edit.
-
+- Check https://github.com/rahulvigneswaran/pix2pix-zero-directions for embeddings of 100 classes in CIFAR100.
 
 
 ## Comparison
