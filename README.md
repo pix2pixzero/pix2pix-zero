@@ -1,6 +1,6 @@
 # pix2pix-zero
 
-### [**website**](https://pix2pixzero.github.io/) | [**demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
+### [**paper**](https://arxiv.org/abs/2302.03027) | [**website**](https://pix2pixzero.github.io/) | [**demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
 #### **Quick start:** [**Edit images**](#getting-started) | [**Gradio (locally hosted)**](#gradio-demo)
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
@@ -23,6 +23,22 @@ The results in the paper are based on the [CompVis](https://github.com/CompVis/s
 We propose pix2pix-zero, a diffusion-based image-to-image approach that allows users to specify the edit direction on-the-fly (e.g., cat to dog). Our method can directly use pre-trained [Stable Diffusion](https://github.com/CompVis/stable-diffusion), for editing real and synthetic images while preserving the input image's structure. Our method is training-free and prompt-free, as it requires neither manual text prompting for each input image nor costly fine-tuning for each task.
 
 **TL;DR**: no finetuning required, no text input needed, input structure preserved.
+
+--- 
+
+### Corresponding Manuscript
+[Zero-shot Image-to-Image Translation](https://pix2pixzero.github.io/) <br>
+[Gaurav Parmar](https://gauravparmar.com/),
+[Krishna Kumar Singh](http://krsingh.cs.ucdavis.edu/),
+[Richard Zhang](https://richzhang.github.io/),
+[Yijun Li](https://yijunmaverick.github.io/),
+[Jingwan Lu](https://research.adobe.com/person/jingwan-lu/),
+[Jun-Yan Zhu](https://www.cs.cmu.edu/~junyanz/)<br>
+CMU and  Adobe <br>
+SIGGRAPH, 2023
+
+---
+
 
 ## Results
 All our results are based on [stable-diffusion-v1-4](https://github.com/CompVis/stable-diffusion) model. Please the website for more results.
