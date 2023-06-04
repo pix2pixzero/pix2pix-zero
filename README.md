@@ -1,6 +1,6 @@
 # pix2pix-zero
 
-### [**Paper**](https://arxiv.org/abs/2302.03027) | [**Website**](https://pix2pixzero.github.io/) | [**Demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
+### [**paper**](https://arxiv.org/abs/2302.03027) | [**website**](https://pix2pixzero.github.io/) | [**demo**](https://huggingface.co/spaces/pix2pix-zero-library/pix2pix-zero-demo) 
 #### **Quick start:** [**Edit images**](#getting-started) | [**Gradio (locally hosted)**](#gradio-demo)
 
 This is author's reimplementation of "Zero-shot Image-to-Image Translation" using the diffusers library. <br>
