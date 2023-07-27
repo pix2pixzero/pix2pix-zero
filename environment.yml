@@ -4,13 +4,14 @@ channels:
   - nvidia
   - defaults
 dependencies:
+  - python=3.9
   - pip
   - pytorch-cuda=11.6
   - torchvision
   - pytorch
   - pip:
     - accelerate
-    - diffusers
+    - diffusers=0.14.0
     - einops
     - gradio
     - ipython
