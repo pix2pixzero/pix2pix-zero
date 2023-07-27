@@ -11,7 +11,7 @@ dependencies:
   - pytorch
   - pip:
     - accelerate
-    - diffusers=0.14.0
+    - diffusers=0.12.1
     - einops
     - gradio
     - ipython
