@@ -41,7 +41,7 @@ SIGGRAPH, 2023
 
 
 ## Results
-All our results are based on [stable-diffusion-v1-4](https://github.com/CompVis/stable-diffusion) model. Please the website for more results.
+All our results are based on [stable-diffusion-v1-4](https://github.com/CompVis/stable-diffusion) model. Please see the website for more results.
 
 <div>
 <p align="center">
