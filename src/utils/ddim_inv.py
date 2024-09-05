@@ -29,7 +29,7 @@ class DDIMInversion(BasePipeline):
         for ch_idx in range(x.shape[0]):
             noise = x[ch_idx][None, None,:,:]
             while True:
-                if random_shift: roll_amount = randrange(noise.shape[2]//2)
+                if random_shift: roll_amount = randrange(1, noise.shape[2]//2)
                 else: roll_amount = 1
                 reg_loss += (noise*torch.roll(noise, shifts=roll_amount, dims=2)).mean()**2
                 reg_loss += (noise*torch.roll(noise, shifts=roll_amount, dims=3)).mean()**2
