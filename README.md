@@ -197,3 +197,8 @@ Comparisons with different baselines, including, SDEdit + word swap, DDIM + word
 <img src='assets/comparison.jpg' align="center" width=900>
 </p>
 </div>
+
+
+
+### Note:
+The original implementation for the regularized DDIM Inversion had an implementation issue where the random roll would sometimes not get applied. Please see the updated code [here](https://github.com/pix2pixzero/pix2pix-zero/blob/main/src/utils/ddim_inv.py#L32) for the updated version.
