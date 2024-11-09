@@ -15,7 +15,7 @@ Returns the list of directions currently available in the HF library
 def hf_get_all_directions_names():
     hf_api = HfApi()
     info = hf_api.list_models(author="pix2pix-zero-library")
-    l_model_ids = [m.modelId for m in info]
+    l_model_ids = [m.id for m in info]
     l_model_ids = [m for m in l_model_ids if "_sd14" in m]
     l_edit_names = [m.split("/")[-1] for m in l_model_ids]
     l_desc = [hf_hub_download(repo_id=m_id, filename="short_description.txt") for m_id in l_model_ids]
